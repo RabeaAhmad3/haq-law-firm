@@ -137,17 +137,6 @@ function ContactDetails() {
 
       <Border className="mt-10 pt-10">
         <h3 className="font-display text-base font-semibold text-burgundy-900">
-          Office
-        </h3>
-        <address className="mt-4 text-sm not-italic text-warm-600">
-          <p className="font-semibold text-warm-950">Haq Law Firm</p>
-          <p>1601 Connecticut Ave NW, Suite 700</p>
-          <p>Washington, DC 20009</p>
-        </address>
-      </Border>
-
-      <Border className="mt-10 pt-10">
-        <h3 className="font-display text-base font-semibold text-burgundy-900">
           Phone
         </h3>
         <p className="mt-4">
@@ -174,7 +163,7 @@ function ContactDetails() {
         </p>
       </Border>
 
-      <Border className="mt-10 pt-10">
+      {/* <Border className="mt-10 pt-10">
         <h3 className="font-display text-base font-semibold text-burgundy-900">
           Schedule a Consultation
         </h3>
@@ -187,7 +176,7 @@ function ContactDetails() {
             Schedule via Calendly
           </a>
         </p>
-      </Border>
+      </Border> */}
     </FadeIn>
   )
 }

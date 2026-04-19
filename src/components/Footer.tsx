@@ -8,8 +8,9 @@ const navigation = [
   {
     title: 'Practice Areas',
     links: [
-      { title: 'Employment Discrimination', href: '/#practice-areas' },
-      { title: 'Civil Rights', href: '/#practice-areas' },
+      { title: 'Workplace Discrimination & Harassment', href: '/#practice-areas' },
+      { title: 'Civil Rights & Discrimination', href: '/#practice-areas' },
+      { title: 'Wrongful Termination & Retaliation', href: '/#practice-areas' },
     ],
   },
   {
@@ -56,11 +57,6 @@ function ContactInfo() {
       <h2 className="font-display text-sm font-semibold tracking-wider text-burgundy-900">
         Contact Us
       </h2>
-      <address className="mt-4 text-sm not-italic text-warm-700">
-        <p className="font-semibold text-warm-900">Haq Law Firm</p>
-        <p className="mt-2">1601 Connecticut Ave NW, Suite 700</p>
-        <p>Washington, DC 20009</p>
-      </address>
       <div className="mt-4 text-sm text-warm-700">
         <p>
           <a href="tel:+1XXXXXXXXXX" className="hover:text-burgundy-900 transition">

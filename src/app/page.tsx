@@ -11,7 +11,7 @@ import { StylizedImage } from '@/components/StylizedImage'
 import { GridPattern } from '@/components/GridPattern'
 import { Border } from '@/components/Border'
 import { Button } from '@/components/Button'
-import imageMaheen from '@/images/maheen-haq.png'
+import imageMaheen from '../../maheenhaq.png'
 import { RootLayout } from '@/components/RootLayout'
 
 function Hero() {
@@ -110,14 +110,14 @@ function Mission() {
 
 const practiceAreas = [
   {
-    title: 'Employment Discrimination & Sexual Harassment',
+    title: 'Workplace Discrimination & Harassment',
     description:
       'I represent employees who have been subjected to workplace injustice and fight to hold employers accountable.',
     items: [
       'Sexual harassment or assault in the workplace',
       'Gender-based discrimination',
       'Ethnic or racial discrimination',
-      'Retaliation for reporting misconduct or asserting rights',
+      'Hostile work environment',
     ],
   },
   {
@@ -126,14 +126,26 @@ const practiceAreas = [
       'I advocate for individuals whose rights have been violated.',
     items: [
       'Police misconduct and brutality',
+      'Excessive force',
       'Incarceree rights',
+    ],
+  },
+  {
+    title: 'Wrongful Termination & Retaliation',
+    description:
+      'I fight for employees who have been punished for standing up for their rights.',
+    items: [
+      'Wrongful termination',
+      'Retaliation for reporting misconduct',
+      'Whistleblower protection',
+      'Unpaid wages and overtime violations',
     ],
   },
 ]
 
 function PracticeAreas() {
   return (
-    <>
+    <div id="practice-areas">
       <SectionIntro
         eyebrow="Practice Areas"
         title="Dedicated legal representation when you need it most."
@@ -145,7 +157,7 @@ function PracticeAreas() {
         </p>
       </SectionIntro>
       <Container className="mt-16">
-        <FadeInStagger className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <FadeInStagger className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           {practiceAreas.map((area) => (
             <FadeIn key={area.title} className="flex">
               <article className="relative flex w-full flex-col rounded-3xl p-6 ring-1 ring-burgundy-900/10 transition hover:bg-warm-50 sm:p-8">
@@ -181,7 +193,7 @@ function PracticeAreas() {
           ))}
         </FadeInStagger>
       </Container>
-    </>
+    </div>
   )
 }
 

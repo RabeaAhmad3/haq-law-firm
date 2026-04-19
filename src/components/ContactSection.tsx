@@ -27,28 +27,19 @@ export function ContactSection() {
               <h3 className="font-display text-base font-semibold text-white">
                 Contact Information
               </h3>
-              <div className="mt-6 grid grid-cols-1 gap-6 text-sm sm:grid-cols-2">
-                <div>
-                  <p className="font-semibold text-gold-400">Office</p>
-                  <address className="mt-2 not-italic text-burgundy-200">
-                    <p>1601 Connecticut Ave NW, Suite 700</p>
-                    <p>Washington, DC 20009</p>
-                  </address>
-                </div>
-                <div>
-                  <p className="font-semibold text-gold-400">Get in Touch</p>
-                  <div className="mt-2 text-burgundy-200">
-                    <p>
-                      <a href="tel:+12404902868" className="hover:text-white transition">
-                        (240) 490-2868
-                      </a>
-                    </p>
-                    <p className="mt-1">
-                      <a href="mailto:maheen@haqlegal.com" className="hover:text-white transition">
-                        maheen@haqlegal.com
-                      </a>
-                    </p>
-                  </div>
+              <div className="mt-6 text-sm">
+                <p className="font-semibold text-gold-400">Get in Touch</p>
+                <div className="mt-2 text-burgundy-200">
+                  <p>
+                    <a href="tel:+12404902868" className="hover:text-white transition">
+                      (240) 490-2868
+                    </a>
+                  </p>
+                  <p className="mt-1">
+                    <a href="mailto:maheen@haqlegal.com" className="hover:text-white transition">
+                      maheen@haqlegal.com
+                    </a>
+                  </p>
                 </div>
               </div>
             </div>

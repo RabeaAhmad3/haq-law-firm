@@ -67,8 +67,7 @@ function Header({
           onMouseEnter={() => setLogoHovered(true)}
           onMouseLeave={() => setLogoHovered(false)}
         >
-          <Logomark className="sm:hidden" invert={invert} />
-          <Logo className="hidden sm:block" invert={invert} />
+          <Logo invert={invert} />
         </Link>
         <div className="flex items-center gap-x-8">
           <Button href="/contact" invert={invert}>
@@ -233,8 +232,6 @@ function RootLayoutInner({ children }: { children: React.ReactNode }) {
                     </h2>
                     <div className="mt-6 text-sm text-burgundy-200">
                       <p className="font-semibold text-white">Haq Law Firm</p>
-                      <p className="mt-2">1601 Connecticut Ave NW, Suite 700</p>
-                      <p>Washington, DC 20009</p>
                       <p className="mt-4">
                         <a href="tel:+12404902868" className="hover:text-gold-400 transition">
                           (240) 490-2868
