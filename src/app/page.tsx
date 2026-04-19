@@ -316,9 +316,55 @@ export const metadata: Metadata = {
     'Haq Law Firm provides compassionate, skilled legal representation for employment discrimination and civil rights violations.',
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Attorney',
+  name: 'Maheen Haq',
+  alternateName: 'Haq Law Firm',
+  description:
+    'Haq Law Firm provides compassionate, skilled legal representation for employment discrimination, civil rights violations, and workplace harassment.',
+  url: 'https://haqlegal.com',
+  telephone: '+1-240-490-2868',
+  email: 'maheen@haqlegal.com',
+  areaServed: 'United States',
+  knowsAbout: [
+    'Employment Discrimination',
+    'Civil Rights',
+    'Sexual Harassment',
+    'Workplace Discrimination',
+    'Wrongful Termination',
+    'Police Misconduct',
+    'Whistleblower Protection',
+  ],
+  priceRange: '$$',
+  '@graph': [
+    {
+      '@type': 'LegalService',
+      name: 'Haq Law Firm',
+      url: 'https://haqlegal.com',
+      description:
+        'Legal representation for employment discrimination, civil rights violations, and workplace harassment.',
+      serviceType: [
+        'Employment Discrimination',
+        'Civil Rights',
+        'Wrongful Termination',
+        'Workplace Harassment',
+      ],
+      provider: {
+        '@type': 'Attorney',
+        name: 'Maheen Haq',
+      },
+    },
+  ],
+}
+
 export default function Home() {
   return (
     <RootLayout>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Hero />
       <Mission />
       <PracticeAreas />

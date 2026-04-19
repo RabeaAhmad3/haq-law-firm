@@ -3,6 +3,7 @@ import { type Metadata } from 'next'
 import '@/styles/tailwind.css'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://haqlegal.com'),
   title: {
     template: '%s | Haq Law Firm',
     default: 'Haq Law Firm | Fighting for Justice. Protecting Your Rights.',
@@ -18,6 +19,21 @@ export const metadata: Metadata = {
     'Maheen Haq',
     'Haq Law Firm',
   ],
+  openGraph: {
+    title: 'Haq Law Firm | Fighting for Justice. Protecting Your Rights.',
+    description:
+      'Compassionate, skilled legal representation for employment discrimination, civil rights violations, and workplace harassment.',
+    url: 'https://haqlegal.com',
+    siteName: 'Haq Law Firm',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Haq Law Firm | Fighting for Justice. Protecting Your Rights.',
+    description:
+      'Compassionate, skilled legal representation for employment discrimination, civil rights violations, and workplace harassment.',
+  },
 }
 
 export default function Layout({ children }: { children: React.ReactNode }) {
