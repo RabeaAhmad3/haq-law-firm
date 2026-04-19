@@ -1,0 +1,81 @@
+@import 'tailwindcss';
+@import './base.css';
+@import './typography.css' layer(components);
+
+@theme {
+  /* Haq Law Firm Color Palette - Maroon & Champagne */
+  --color-burgundy-50: #faf2f4;
+  --color-burgundy-100: #f5e5e8;
+  --color-burgundy-200: #e8c5cc;
+  --color-burgundy-300: #d49aa5;
+  --color-burgundy-400: #b86070;
+  --color-burgundy-500: #9a3a4e;
+  --color-burgundy-600: #7A2332;
+  --color-burgundy-700: #6b1e2c;
+  --color-burgundy-800: #5a1a26;
+  --color-burgundy-900: #4d1722;
+  --color-burgundy-950: #2e0d14;
+
+  --color-gold-50: #f7f4ee;
+  --color-gold-100: #efe9df;
+  --color-gold-200: #DDD5C8;
+  --color-gold-300: #c9bfb0;
+  --color-gold-400: #B8A088;
+  --color-gold-500: #a8906e;
+  --color-gold-600: #96805f;
+  --color-gold-700: #7D6B57;
+  --color-gold-800: #6a5a4a;
+  --color-gold-900: #5a4c3f;
+  --color-gold-950: #3a3028;
+
+  /* Warm neutrals for law firm */
+  --color-warm-50: #F7F4EE;
+  --color-warm-100: #efe9df;
+  --color-warm-200: #DDD5C8;
+  --color-warm-300: #c9bfb0;
+  --color-warm-400: #B8A088;
+  --color-warm-500: #96805f;
+  --color-warm-600: #7D6B57;
+  --color-warm-700: #6a5a4a;
+  --color-warm-800: #5a4c3f;
+  --color-warm-900: #4a3f35;
+  --color-warm-950: #2a2420;
+
+  --text-*: initial;
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1rem;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.5rem;
+  --text-base: 1rem;
+  --text-base--line-height: 1.75rem;
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 1.75rem;
+  --text-xl: 1.25rem;
+  --text-xl--line-height: 2rem;
+  --text-2xl: 1.5rem;
+  --text-2xl--line-height: 2.25rem;
+  --text-3xl: 1.75rem;
+  --text-3xl--line-height: 2.25rem;
+  --text-4xl: 2rem;
+  --text-4xl--line-height: 2.5rem;
+  --text-5xl: 2.5rem;
+  --text-5xl--line-height: 3rem;
+  --text-6xl: 3rem;
+  --text-6xl--line-height: 3.5rem;
+  --text-7xl: 4rem;
+  --text-7xl--line-height: 4.5rem;
+
+  --radius-4xl: 2.5rem;
+
+  --font-sans:
+    Mona Sans, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  --font-display:
+    Mona Sans, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  --font-display--font-variation-settings: 'wdth' 125;
+
+  --font-display-length: 2;
+}
