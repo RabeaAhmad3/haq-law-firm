@@ -34,6 +34,9 @@ export const metadata: Metadata = {
     description:
       'Compassionate, skilled legal representation for employment discrimination, civil rights violations, and workplace harassment.',
   },
+  verification: {
+    google: 'KAhu8LEFhnxdEsiaMNXNGEnJmtZG_j8sWdjbFV102cg',
+  },
 }
 
 export default function Layout({ children }: { children: React.ReactNode }) {
