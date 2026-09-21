@@ -9,6 +9,7 @@ import { GridPattern } from '@/components/GridPattern'
 import { Border } from '@/components/Border'
 import { Button } from '@/components/Button'
 import imageMaheen from '../../maheenhaq.png'
+import imageProtest from '@/images/maheen-palestine-protest.png'
 import imageEstatePlan from '@/images/ahmed-family-estate-plan.png'
 import { RootLayout } from '@/components/RootLayout'
 import { practiceAreas } from '@/lib/practiceAreas'
@@ -219,8 +220,8 @@ function AboutPreview() {
               <div className="relative mx-auto max-w-md lg:max-w-none">
                 <div className="overflow-hidden rounded-3xl">
                   <Image
-                    src={imageMaheen}
-                    alt="Maheen Haq, Attorney at Law"
+                    src={imageProtest}
+                    alt="Maheen Haq speaking into a microphone with her fist raised at a Palestine protest"
                     sizes="(min-width: 1024px) 45vw, 100vw"
                     className="w-full object-cover grayscale transition duration-500 hover:grayscale-0"
                   />

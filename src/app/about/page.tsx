@@ -8,7 +8,7 @@ import { FadeIn } from '@/components/FadeIn'
 import { GridList, GridListItem } from '@/components/GridList'
 import { PageIntro } from '@/components/PageIntro'
 import { SectionIntro } from '@/components/SectionIntro'
-import imageMaheen from '@/images/maheen-haq.png'
+import imageMaheen from '../../../maheenhaq.png'
 import { RootLayout } from '@/components/RootLayout'
 
 function Biography() {
