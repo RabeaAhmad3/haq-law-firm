@@ -1,13 +1,6 @@
 'use client'
 
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useId,
-  useRef,
-  useState,
-} from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
@@ -17,82 +10,99 @@ import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { Footer } from '@/components/Footer'
 import { GridPattern } from '@/components/GridPattern'
-import { Logo, Logomark } from '@/components/Logo'
+import { Logo } from '@/components/Logo'
+import { practiceAreas } from '@/lib/practiceAreas'
 
-const RootLayoutContext = createContext<{
-  logoHovered: boolean
-  setLogoHovered: React.Dispatch<React.SetStateAction<boolean>>
-} | null>(null)
+function DesktopNavigation() {
+  const pathname = usePathname()
+  const linkClass =
+    'block rounded-lg px-3 py-2 text-sm font-semibold whitespace-nowrap text-burgundy-900 transition hover:bg-burgundy-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-burgundy-600'
 
-function XIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
-      <path d="m5.636 4.223 14.142 14.142-1.414 1.414L4.222 5.637z" />
-      <path d="M4.222 18.363 18.364 4.22l1.414 1.414L5.636 19.777z" />
-    </svg>
-  )
-}
-
-function MenuIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
-      <path d="M2 6h20v2H2zM2 16h20v2H2z" />
-    </svg>
+    <nav
+      aria-label="Main navigation"
+      className="hidden items-center gap-3 lg:flex"
+    >
+      {practiceAreas.map((area) => (
+        <Link
+          key={area.href}
+          href={area.href}
+          className={linkClass}
+          aria-current={pathname === area.href ? 'page' : undefined}
+        >
+          {area.title}
+        </Link>
+      ))}
+      <Link
+        href="/about"
+        className={linkClass}
+        aria-current={pathname === '/about' ? 'page' : undefined}
+      >
+        About
+      </Link>
+      <Button
+        href="/contact"
+        className="ml-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-burgundy-600"
+        aria-current={pathname === '/contact' ? 'page' : undefined}
+      >
+        Contact
+      </Button>
+    </nav>
   )
 }
 
 function Header({
   panelId,
-  icon: Icon,
   expanded,
   onToggle,
   toggleRef,
   invert = false,
 }: {
   panelId: string
-  icon: React.ComponentType<{ className?: string }>
   expanded: boolean
   onToggle: () => void
   toggleRef: React.RefObject<HTMLButtonElement | null>
   invert?: boolean
 }) {
-  let { logoHovered, setLogoHovered } = useContext(RootLayoutContext)!
-
   return (
     <Container>
-      <div className="flex items-center justify-between">
-        <Link
-          href="/"
-          aria-label="Home"
-          onMouseEnter={() => setLogoHovered(true)}
-          onMouseLeave={() => setLogoHovered(false)}
-        >
+      <div className="flex items-center justify-between gap-6">
+        <Link href="/" aria-label="Haq Law Firm home" className="shrink-0">
           <Logo invert={invert} />
         </Link>
-        <div className="flex items-center gap-x-8">
+        {!invert && <DesktopNavigation />}
+        <div className="flex items-center gap-x-6 lg:hidden">
           <Button href="/contact" invert={invert}>
-            Contact us
+            Contact
           </Button>
           <button
             ref={toggleRef}
             type="button"
             onClick={onToggle}
-            aria-expanded={expanded ? 'true' : 'false'}
+            aria-expanded={expanded}
             aria-controls={panelId}
+            aria-label={expanded ? 'Close navigation' : 'Open navigation'}
             className={clsx(
-              'group -m-2.5 rounded-full p-2.5 transition',
-              invert ? 'hover:bg-white/10' : 'hover:bg-burgundy-600/10',
+              'group -m-2.5 rounded-full p-2.5 transition focus-visible:outline-2 focus-visible:outline-offset-4',
+              invert
+                ? 'text-white hover:bg-white/10'
+                : 'text-burgundy-900 hover:bg-burgundy-600/10',
             )}
-            aria-label="Toggle navigation"
           >
-            <Icon
-              className={clsx(
-                'h-6 w-6',
-                invert
-                  ? 'fill-white group-hover:fill-warm-200'
-                  : 'fill-burgundy-900 group-hover:fill-burgundy-700',
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              className="h-6 w-6 fill-current"
+            >
+              {expanded ? (
+                <>
+                  <path d="m5.636 4.223 14.142 14.142-1.414 1.414L4.222 5.637z" />
+                  <path d="M4.222 18.363 18.364 4.22l1.414 1.414L5.636 19.777z" />
+                </>
+              ) : (
+                <path d="M2 6h20v2H2zM2 16h20v2H2z" />
               )}
-            />
+            </svg>
           </button>
         </div>
       </div>
@@ -100,75 +110,82 @@ function Header({
   )
 }
 
-function NavigationRow({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="even:mt-px sm:bg-burgundy-950">
-      <Container>
-        <div className="grid grid-cols-1 sm:grid-cols-2">{children}</div>
-      </Container>
-    </div>
-  )
-}
+function MobileNavigation() {
+  const pathname = usePathname()
+  const rowClass =
+    'block w-full px-6 py-8 text-left transition hover:bg-burgundy-900 focus-visible:outline-2 focus-visible:-outline-offset-4 sm:px-12'
 
-function NavigationItem({
-  href,
-  children,
-}: {
-  href: string
-  children: React.ReactNode
-}) {
   return (
-    <Link
-      href={href}
-      className="group relative isolate -mx-6 bg-burgundy-950 px-6 py-10 even:mt-px sm:mx-0 sm:px-0 sm:py-16 sm:odd:pr-16 sm:even:mt-0 sm:even:border-l sm:even:border-burgundy-800 sm:even:pl-16"
+    <nav
+      aria-label="Main navigation"
+      className="divide-y divide-burgundy-800 bg-burgundy-950 font-display text-3xl font-medium tracking-tight text-white sm:text-4xl"
     >
-      {children}
-      <span className="absolute inset-y-0 -z-10 w-screen bg-burgundy-900 opacity-0 transition group-odd:right-0 group-even:left-0 group-hover:opacity-100" />
-    </Link>
-  )
-}
-
-function Navigation() {
-  return (
-    <nav className="mt-px font-display text-5xl font-medium tracking-tight text-white">
-      <NavigationRow>
-        <NavigationItem href="/about">About Maheen</NavigationItem>
-        <NavigationItem href="/#practice-areas">Practice Areas</NavigationItem>
-      </NavigationRow>
-      <NavigationRow>
-        {/* <NavigationItem href="/blog">Resources</NavigationItem> */}
-        <NavigationItem href="/contact">Contact</NavigationItem>
-      </NavigationRow>
+      {practiceAreas.map((area) => (
+        <Link
+          key={area.href}
+          href={area.href}
+          className={rowClass}
+          aria-current={pathname === area.href ? 'page' : undefined}
+        >
+          {area.title}
+        </Link>
+      ))}
+      <Link
+        href="/about"
+        className={rowClass}
+        aria-current={pathname === '/about' ? 'page' : undefined}
+      >
+        About
+      </Link>
+      <Link
+        href="/contact"
+        className={rowClass}
+        aria-current={pathname === '/contact' ? 'page' : undefined}
+      >
+        Contact
+      </Link>
     </nav>
   )
 }
 
 function RootLayoutInner({ children }: { children: React.ReactNode }) {
-  let panelId = useId()
-  let [expanded, setExpanded] = useState(false)
-  let [isTransitioning, setIsTransitioning] = useState(false)
-  let openRef = useRef<React.ElementRef<'button'>>(null)
-  let closeRef = useRef<React.ElementRef<'button'>>(null)
-  let navRef = useRef<React.ElementRef<'div'>>(null)
-  let shouldReduceMotion = useReducedMotion()
+  const panelId = useId()
+  const [expanded, setExpanded] = useState(false)
+  const [isTransitioning, setIsTransitioning] = useState(false)
+  const openRef = useRef<HTMLButtonElement>(null)
+  const closeRef = useRef<HTMLButtonElement>(null)
+  const shouldReduceMotion = useReducedMotion()
+
+  function closeNavigation() {
+    setIsTransitioning(true)
+    setExpanded(false)
+    window.requestAnimationFrame(() =>
+      openRef.current?.focus({ preventScroll: true }),
+    )
+  }
 
   useEffect(() => {
-    function onClick(event: MouseEvent) {
-      if (
-        event.target instanceof HTMLElement &&
-        event.target.closest('a')?.href === window.location.href
-      ) {
+    const desktop = window.matchMedia('(min-width: 1024px)')
+    function onBreakpointChange() {
+      if (desktop.matches) {
         setIsTransitioning(false)
         setExpanded(false)
       }
     }
-
-    window.addEventListener('click', onClick)
-
-    return () => {
-      window.removeEventListener('click', onClick)
-    }
+    desktop.addEventListener('change', onBreakpointChange)
+    return () => desktop.removeEventListener('change', onBreakpointChange)
   }, [])
+
+  useEffect(() => {
+    if (!expanded) return
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key !== 'Escape') return
+      event.preventDefault()
+      closeNavigation()
+    }
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [expanded])
 
   return (
     <MotionConfig
@@ -178,97 +195,83 @@ function RootLayoutInner({ children }: { children: React.ReactNode }) {
     >
       <header>
         <div
-          className="absolute top-2 right-0 left-0 z-40 pt-14"
-          aria-hidden={expanded ? 'true' : undefined}
-          inert={expanded ? true : undefined}
+          className="absolute inset-x-0 top-2 z-40 pt-8 sm:pt-14"
+          aria-hidden={expanded || undefined}
+          inert={expanded}
         >
           <Header
             panelId={panelId}
-            icon={MenuIcon}
             toggleRef={openRef}
-            expanded={expanded}
+            expanded={false}
             onToggle={() => {
               setIsTransitioning(true)
-              setExpanded((expanded) => !expanded)
-              window.setTimeout(() =>
+              setExpanded(true)
+              window.requestAnimationFrame(() =>
                 closeRef.current?.focus({ preventScroll: true }),
               )
             }}
           />
         </div>
-
+        <div className="hidden h-2 lg:block" />
         <motion.div
           layout
           id={panelId}
           style={{ height: expanded ? 'auto' : '0.5rem' }}
-          className="relative z-50 overflow-hidden bg-burgundy-950 pt-2"
-          aria-hidden={expanded ? undefined : 'true'}
-          inert={expanded ? undefined : true}
+          className="relative z-50 overflow-hidden bg-burgundy-950 pt-2 lg:hidden"
+          aria-hidden={!expanded}
+          inert={!expanded}
+          onClick={(event) => {
+            if (event.target instanceof Element && event.target.closest('a')) {
+              setIsTransitioning(false)
+              setExpanded(false)
+              window.requestAnimationFrame(() =>
+                openRef.current?.focus({ preventScroll: true }),
+              )
+            }
+          }}
         >
           <motion.div layout className="bg-burgundy-900">
-            <div ref={navRef} className="bg-burgundy-950 pt-14 pb-16">
+            <div className="bg-burgundy-950 pt-8 pb-12 sm:pt-14">
               <Header
                 invert
                 panelId={panelId}
-                icon={XIcon}
                 toggleRef={closeRef}
                 expanded={expanded}
-                onToggle={() => {
-                  setIsTransitioning(true)
-                  setExpanded((expanded) => !expanded)
-                  window.setTimeout(() =>
-                    openRef.current?.focus({ preventScroll: true }),
-                  )
-                }}
+                onToggle={closeNavigation}
               />
             </div>
-            <Navigation />
-            <div className="relative bg-burgundy-950 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-burgundy-800">
-              <Container>
-                <div className="grid grid-cols-1 gap-y-10 pt-10 pb-16 sm:grid-cols-2 sm:pt-16">
-                  <div>
-                    <h2 className="font-display text-base font-semibold text-white">
-                      Contact Us
-                    </h2>
-                    <div className="mt-6 text-sm text-burgundy-200">
-                      <p className="font-semibold text-white">Haq Law Firm</p>
-                      <p className="mt-4">
-                        <a href="tel:+12404902868" className="hover:text-gold-400 transition">
-                          (240) 490-2868
-                        </a>
-                      </p>
-                      <p className="mt-1">
-                        <a href="mailto:maheen@haqlegal.com" className="hover:text-gold-400 transition">
-                          maheen@haqlegal.com
-                        </a>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="sm:border-l sm:border-transparent sm:pl-16">
-                    <h2 className="font-display text-base font-semibold text-white">
-                      Schedule a Consultation
-                    </h2>
-                    <p className="mt-6 text-sm text-burgundy-200">
-                      Ready to discuss your case? Schedule a confidential consultation today.
-                    </p>
-                    <a
-                      href="/contact"
-                      className="mt-4 inline-block rounded-full bg-gold-500 px-4 py-2 text-sm font-semibold text-burgundy-950 hover:bg-gold-400 transition"
-                    >
-                      Get in Touch
-                    </a>
-                  </div>
-                </div>
-              </Container>
+            <MobileNavigation />
+            <div className="border-t border-burgundy-800 bg-burgundy-950 px-6 py-10 text-sm text-burgundy-200 sm:px-12">
+              <h2 className="font-display text-base font-semibold text-white">
+                Contact Us
+              </h2>
+              <p className="mt-6 font-semibold text-white">Haq Law Firm</p>
+              <p className="mt-4">
+                <a
+                  href="tel:+12404902868"
+                  className="transition hover:text-gold-400"
+                >
+                  (240) 490-2868
+                </a>
+              </p>
+              <p className="mt-1">
+                <a
+                  href="mailto:maheen@haqlegal.com"
+                  className="transition hover:text-gold-400"
+                >
+                  maheen@haqlegal.com
+                </a>
+              </p>
             </div>
           </motion.div>
         </motion.div>
       </header>
-
       <motion.div
         layout
         style={{ borderTopLeftRadius: 40, borderTopRightRadius: 40 }}
         className="relative flex flex-auto overflow-hidden bg-warm-50 pt-14"
+        aria-hidden={expanded || undefined}
+        inert={expanded}
       >
         <motion.div
           layout
@@ -279,9 +282,7 @@ function RootLayoutInner({ children }: { children: React.ReactNode }) {
             yOffset={-96}
             interactive
           />
-
           <main className="w-full flex-auto">{children}</main>
-
           <Footer />
         </motion.div>
       </motion.div>
@@ -290,12 +291,6 @@ function RootLayoutInner({ children }: { children: React.ReactNode }) {
 }
 
 export function RootLayout({ children }: { children: React.ReactNode }) {
-  let pathname = usePathname()
-  let [logoHovered, setLogoHovered] = useState(false)
-
-  return (
-    <RootLayoutContext.Provider value={{ logoHovered, setLogoHovered }}>
-      <RootLayoutInner key={pathname}>{children}</RootLayoutInner>
-    </RootLayoutContext.Provider>
-  )
+  const pathname = usePathname()
+  return <RootLayoutInner key={pathname}>{children}</RootLayoutInner>
 }

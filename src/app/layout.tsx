@@ -2,16 +2,22 @@ import { type Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/next'
 
 import '@/styles/tailwind.css'
+import { homeTitle, homeDescription } from '@/lib/metadata'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://haqlegal.com'),
   title: {
     template: '%s | Haq Law Firm',
-    default: 'Haq Law Firm | Fighting for Justice. Protecting Your Rights.',
+    default: homeTitle,
   },
-  description:
-    'Haq Law Firm provides compassionate, skilled legal representation for employment discrimination, civil rights violations, and commercial litigation.',
+  description: homeDescription,
   keywords: [
+    'estate planning attorney',
+    'wills and trusts lawyer',
+    'Islamic will lawyer',
+    'Islamic estate planning',
+    'Muslim estate planning attorney',
+    'power of attorney',
     'civil rights attorney',
     'employment discrimination lawyer',
     'sexual harassment attorney',
@@ -21,9 +27,8 @@ export const metadata: Metadata = {
     'Haq Law Firm',
   ],
   openGraph: {
-    title: 'Haq Law Firm | Fighting for Justice. Protecting Your Rights.',
-    description:
-      'Compassionate, skilled legal representation for employment discrimination, civil rights violations, and workplace harassment.',
+    title: homeTitle,
+    description: homeDescription,
     url: 'https://haqlegal.com',
     siteName: 'Haq Law Firm',
     locale: 'en_US',
@@ -31,9 +36,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    title: 'Haq Law Firm | Fighting for Justice. Protecting Your Rights.',
-    description:
-      'Compassionate, skilled legal representation for employment discrimination, civil rights violations, and workplace harassment.',
+    title: homeTitle,
+    description: homeDescription,
   },
   verification: {
     google: 'KAhu8LEFhnxdEsiaMNXNGEnJmtZG_j8sWdjbFV102cg',

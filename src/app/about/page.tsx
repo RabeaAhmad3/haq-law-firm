@@ -1,4 +1,4 @@
-import { type Metadata } from 'next'
+import { pageMetadata } from '@/lib/metadata'
 import Image from 'next/image'
 
 import { Border } from '@/components/Border'
@@ -26,39 +26,43 @@ function Biography() {
                   priority
                 />
               </div>
-              <div className="absolute -bottom-4 -right-4 -z-10 h-full w-full rounded-3xl bg-gold-200" />
+              <div className="absolute -right-4 -bottom-4 -z-10 h-full w-full rounded-3xl bg-gold-200" />
             </div>
           </div>
           <div className="mt-12 lg:mt-0 lg:w-3/5">
             <Border position="left" className="pl-8">
               <div className="space-y-6 text-base text-warm-700">
                 <p>
-                  As a grassroots organizer for over a decade, Maheen understands
-                  community centered and movement lawyering. She has a wealth of
-                  trauma informed training that she brings to her practice. She
-                  knows how scary it is to put your body on the line for something
-                  you believe in. She will use her personal experiences dealing
-                  with police violence and other civil rights issues to create a
-                  safe and client centered environment for you.
+                  As a grassroots organizer for over a decade, Maheen
+                  understands community centered and movement lawyering. She has
+                  a wealth of trauma informed training that she brings to her
+                  practice. She knows how scary it is to put your body on the
+                  line for something you believe in. She will use her personal
+                  experiences dealing with police violence and other civil
+                  rights issues to create a safe and client centered environment
+                  for you.
                 </p>
                 <p>
                   Maheen started organizing protests and doing civil rights work
-                  at the age of thirteen in Hagerstown, Maryland. She taught poetry
-                  to young students at the Robert Johnson Community Center and
-                  coached soccer for refugees in Baltimore City. Her passion for
-                  civil rights led her to Georgetown University Law Center.
+                  at the age of thirteen in Hagerstown, Maryland. She taught
+                  poetry to young students at the Robert Johnson Community
+                  Center and coached soccer for refugees in Baltimore City. Her
+                  passion for civil rights led her to Georgetown University Law
+                  Center.
                 </p>
                 <p>
                   At Georgetown, she continued to work on policing issues at the
-                  Innovative Policing Center where she researched police violence
-                  in Hagerstown, Maryland. At the Georgetown Civil Rights Clinic,
-                  Maheen led an investigation of the Hagerstown Police Department.
+                  Innovative Policing Center where she researched police
+                  violence in Hagerstown, Maryland. At the Georgetown Civil
+                  Rights Clinic, Maheen led an investigation of the Hagerstown
+                  Police Department.
                 </p>
                 <p>
                   During her time in law school she worked on police violence
-                  issues, tenants&apos; rights, and incarceree rights while working at
-                  the Special Litigation Section of the Department of Justice, the
-                  Washington Lawyers&apos; Committee and Loevy &amp; Loevy.
+                  issues, tenants&apos; rights, and incarceree rights while
+                  working at the Special Litigation Section of the Department of
+                  Justice, the Washington Lawyers&apos; Committee and Loevy
+                  &amp; Loevy.
                 </p>
                 <p>
                   Prior to launching her own firm, Maheen worked at a national
@@ -68,6 +72,13 @@ function Biography() {
                   cases of wrongful police killings and police brutality, and
                   guided businesses through complex disputes, along with other
                   civil litigation matters.
+                </p>
+                <p>
+                  Maheen founded Haq Law Firm to expand beyond civil rights
+                  litigation into estate planning — helping individuals and
+                  families, including Muslim families seeking wills and trusts
+                  structured around Islamic inheritance principles, put a clear
+                  plan in place for the people and things they care about most.
                 </p>
               </div>
             </Border>
@@ -102,7 +113,9 @@ function Education() {
             <p className="font-display text-lg font-semibold text-burgundy-900">
               University of Maryland Baltimore County
             </p>
-            <p className="mt-2 text-sm text-warm-600">Bachelor of Arts (BA), Global Studies &amp; Economics</p>
+            <p className="mt-2 text-sm text-warm-600">
+              Bachelor of Arts (BA), Global Studies &amp; Economics
+            </p>
           </div>
         </div>
       </FadeIn>
@@ -125,7 +138,7 @@ function Experience() {
       role: 'Special Litigation Section',
     },
     {
-      organization: 'Washington Lawyers\' Committee',
+      organization: "Washington Lawyers' Committee",
       role: 'Civil rights litigation',
     },
     {
@@ -182,12 +195,13 @@ function Values() {
       <Container className="mt-16">
         <GridList>
           <GridListItem title="Justice" invert>
-            We believe everyone deserves equal protection under the law and fight
-            relentlessly to ensure our clients receive the justice they deserve.
+            We believe everyone deserves equal protection under the law and
+            fight relentlessly to ensure our clients receive the justice they
+            deserve.
           </GridListItem>
           <GridListItem title="Compassion" invert>
-            We approach every case with empathy and understanding, recognizing the
-            human impact of legal issues on our clients and their families.
+            We approach every case with empathy and understanding, recognizing
+            the human impact of legal issues on our clients and their families.
           </GridListItem>
           <GridListItem title="Community" invert>
             We are committed to giving back and making a positive impact beyond
@@ -211,8 +225,8 @@ function Personal() {
           <p className="mt-6 text-base text-warm-700">
             Outside of work, Maheen loves to weightlift, paint, write, and coach
             and play soccer. These pursuits reflect her commitment to physical
-            strength, creative expression, and community engagement — values that
-            she brings to her legal practice every day.
+            strength, creative expression, and community engagement — values
+            that she brings to her legal practice every day.
           </p>
         </Border>
       </FadeIn>
@@ -220,19 +234,19 @@ function Personal() {
   )
 }
 
-export const metadata: Metadata = {
-  title: 'About Maheen Haq | Haq Law Firm',
-  description:
-    'Learn about Maheen Haq, a civil rights attorney dedicated to fighting for justice and protecting the rights of individuals facing discrimination.',
-}
+export const metadata = pageMetadata(
+  'About Maheen Haq',
+  'Meet Maheen Haq, a Georgetown Law graduate helping individuals and families with estate planning, employment matters, and civil rights representation.',
+  '/about',
+)
 
 export default function About() {
   return (
     <RootLayout>
       <PageIntro eyebrow="About" title="Meet Maheen Haq">
         <p>
-          An attorney dedicated to standing up for and defending the civil rights
-          of all people.
+          Helping individuals and families plan for the future through estate
+          planning, while standing up for their employment and civil rights.
         </p>
       </PageIntro>
 

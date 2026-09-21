@@ -1,6 +1,7 @@
 import { type MetadataRoute } from 'next'
 
 import { loadArticles } from '@/lib/mdx'
+import { practiceAreas } from '@/lib/practiceAreas'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let articles = await loadArticles()
@@ -27,6 +28,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: 'https://haqlegal.com/blog',
       lastModified: new Date(),
     },
+    ...practiceAreas.map((area) => ({
+      url: `https://haqlegal.com${area.href}`,
+      lastModified: new Date(),
+    })),
     ...blogEntries,
   ]
 }

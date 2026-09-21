@@ -3,20 +3,18 @@ import Link from 'next/link'
 import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
 import { Logo } from '@/components/Logo'
+import { practiceAreas } from '@/lib/practiceAreas'
 
 const navigation = [
   {
     title: 'Practice Areas',
-    links: [
-      { title: 'Workplace Discrimination & Harassment', href: '/#practice-areas' },
-      { title: 'Civil Rights & Discrimination', href: '/#practice-areas' },
-      { title: 'Wrongful Termination & Retaliation', href: '/#practice-areas' },
-    ],
+    links: practiceAreas,
   },
   {
     title: 'Firm',
     links: [
-      { title: 'About Maheen', href: '/about' },
+      { title: 'Home', href: '/' },
+      { title: 'About', href: '/about' },
       // { title: 'Resources', href: '/blog' },
       { title: 'Contact', href: '/contact' },
     ],
@@ -59,12 +57,18 @@ function ContactInfo() {
       </h2>
       <div className="mt-4 text-sm text-warm-700">
         <p>
-          <a href="tel:+1XXXXXXXXXX" className="hover:text-burgundy-900 transition">
+          <a
+            href="tel:+12404902868"
+            className="transition hover:text-burgundy-900"
+          >
             (240) 490-2868
           </a>
         </p>
         <p className="mt-1">
-          <a href="mailto:maheen@haqlegal.com" className="hover:text-burgundy-900 transition">
+          <a
+            href="mailto:maheen@haqlegal.com"
+            className="transition hover:text-burgundy-900"
+          >
             maheen@haqlegal.com
           </a>
         </p>
@@ -88,6 +92,9 @@ export function Footer() {
             <Logo />
           </Link>
           <div className="text-right">
+            <p className="mb-2 text-sm text-warm-700">
+              Maheen Haq is licensed in Maryland.
+            </p>
             <p className="text-sm text-warm-700">
               © Haq Law Firm {new Date().getFullYear()}. All rights reserved.
             </p>

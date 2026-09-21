@@ -46,7 +46,7 @@ function TextArea({
         {...props}
         placeholder=" "
         rows={4}
-        className="peer block w-full border border-warm-300 bg-transparent px-6 pt-12 pb-4 text-base/6 text-warm-950 ring-4 ring-transparent transition group-first:rounded-t-2xl group-last:rounded-b-2xl focus:border-burgundy-900 focus:ring-burgundy-900/5 focus:outline-hidden resize-none"
+        className="peer block w-full resize-none border border-warm-300 bg-transparent px-6 pt-12 pb-4 text-base/6 text-warm-950 ring-4 ring-transparent transition group-first:rounded-t-2xl group-last:rounded-b-2xl focus:border-burgundy-900 focus:ring-burgundy-900/5 focus:outline-hidden"
       />
       <label
         htmlFor={id}
@@ -59,7 +59,9 @@ function TextArea({
 }
 
 function ContactForm() {
-  let [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
+  let [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>(
+    'idle',
+  )
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -103,7 +105,11 @@ function ContactForm() {
             required
           />
           <TextInput label="Phone" type="tel" name="phone" autoComplete="tel" />
-          <TextArea label="Tell us about your case" name="message" required />
+          <TextArea
+            label="Tell us about your legal needs"
+            name="message"
+            required
+          />
         </div>
         {status === 'success' && (
           <p className="mt-4 text-sm font-semibold text-green-700">
@@ -130,9 +136,10 @@ function ContactDetails() {
         Contact Information
       </h2>
       <p className="mt-6 text-base text-warm-600">
-        Whether you&apos;re facing workplace harassment, discrimination, or a civil
-        rights violation, I&apos;m here to help. Contact me today to schedule a
-        confidential consultation.
+        Whether you&apos;re planning for your family&apos;s future, navigating
+        an employment issue, or seeking help with a civil rights violation,
+        I&apos;m here to help. Contact me to schedule a confidential
+        consultation.
       </p>
 
       <Border className="mt-10 pt-10">
@@ -142,7 +149,7 @@ function ContactDetails() {
         <p className="mt-4">
           <a
             href="tel:+12404902868"
-            className="text-sm text-warm-600 hover:text-burgundy-900 transition"
+            className="text-sm text-warm-600 transition hover:text-burgundy-900"
           >
             (240) 490-2868
           </a>
@@ -156,7 +163,7 @@ function ContactDetails() {
         <p className="mt-4">
           <a
             href="mailto:maheen@haqlegal.com"
-            className="text-sm text-warm-600 hover:text-burgundy-900 transition"
+            className="text-sm text-warm-600 transition hover:text-burgundy-900"
           >
             maheen@haqlegal.com
           </a>
@@ -184,10 +191,11 @@ function ContactDetails() {
 export default function Contact() {
   return (
     <RootLayout>
-      <PageIntro eyebrow="Contact" title="Let's Talk About Your Case">
+      <PageIntro eyebrow="Contact" title="Let’s Talk About Your Legal Needs">
         <p>
-          Whether you&apos;re facing workplace harassment, discrimination, or a civil
-          rights violation, I&apos;m here to help.
+          Get personal guidance for estate planning, employment matters, and
+          civil rights. Tell me what you need help with, and we&apos;ll take the
+          next step together.
         </p>
       </PageIntro>
 

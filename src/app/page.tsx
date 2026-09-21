@@ -1,38 +1,36 @@
-import { type Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
 import { ContactSection } from '@/components/ContactSection'
 import { Container } from '@/components/Container'
 import { FadeIn, FadeInStagger } from '@/components/FadeIn'
-import { List, ListItem } from '@/components/List'
 import { SectionIntro } from '@/components/SectionIntro'
-import { StylizedImage } from '@/components/StylizedImage'
 import { GridPattern } from '@/components/GridPattern'
 import { Border } from '@/components/Border'
 import { Button } from '@/components/Button'
 import imageMaheen from '../../maheenhaq.png'
+import imageProtest from '@/images/maheen-palestine-protest.png'
+import imageEstatePlan from '@/images/ahmed-family-estate-plan.png'
 import { RootLayout } from '@/components/RootLayout'
+import { practiceAreas } from '@/lib/practiceAreas'
+import { homeTitle, homeDescription, pageMetadata } from '@/lib/metadata'
 
 function Hero() {
   return (
-    <Container className="mt-24 sm:mt-32 md:mt-56">
+    <Container className="mt-24 sm:mt-32 lg:mt-40">
       <div className="lg:flex lg:items-center lg:gap-x-16">
         <FadeIn className="max-w-2xl lg:max-w-none lg:flex-1">
           <h1 className="font-display text-5xl font-medium tracking-tight text-balance text-burgundy-900 sm:text-7xl">
-            Fighting for Justice. Protecting Your Rights.
+            Protecting What You&apos;ve Built. Planning for Who You Love.
           </h1>
           <p className="mt-6 text-xl text-warm-700">
-            When your rights, your livelihood, or your dignity are at stake, you
-            need more than just a lawyer — you need an advocate. I provide
-            compassionate, skilled, and relentless legal representation to
-            individuals and families. Whether you&apos;ve experienced sexual
-            harassment at work, faced ethnic or racial discrimination, or have
-            suffered from police violence, I am here to guide you every step of
-            the way.
+            Plan for your family&apos;s future with clear, personal guidance.
+            From wills and trusts that reflect your wishes and faith to advocacy
+            for your rights at work and in your community, I&apos;m here to
+            help.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <Button href="#contact">Schedule a Consultation</Button>
+            <Button href="/contact">Schedule a Consultation</Button>
             <Button href="tel:+12404902868" invert>
               Call Now
             </Button>
@@ -45,6 +43,7 @@ function Hero() {
                 src={imageMaheen}
                 alt="Maheen Haq, Attorney at Law"
                 className="w-full object-cover"
+                sizes="(min-width: 1024px) 45vw, 100vw"
                 priority
               />
             </div>
@@ -65,8 +64,8 @@ function Mission() {
             Our Mission
           </h2>
           <p className="mt-6 text-lg text-burgundy-100">
-            We&apos;re dedicated to providing high quality legal services to those
-            that need it most.
+            We&apos;re dedicated to providing high quality legal services to
+            those that need it most.
           </p>
           <div className="mt-10 flex items-start gap-x-6 rounded-2xl bg-burgundy-800/50 p-6">
             <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gold-500 text-burgundy-950">
@@ -90,7 +89,8 @@ function Mission() {
               </p>
               <p className="mt-2 text-burgundy-100">
                 The Haq Law Firm is built on a commitment to making the world a
-                better place both inside and outside the courtroom. That&apos;s why{' '}
+                better place both inside and outside the courtroom. That&apos;s
+                why{' '}
                 <span className="font-semibold text-gold-400">
                   a portion of our profits are donated to people who need it the
                   most
@@ -108,156 +108,93 @@ function Mission() {
   )
 }
 
-const practiceAreas = [
-  {
-    title: 'Workplace Discrimination & Harassment',
-    description:
-      'I represent employees who have been subjected to workplace injustice and fight to hold employers accountable.',
-    items: [
-      'Sexual harassment or assault in the workplace',
-      'Gender-based discrimination',
-      'Ethnic or racial discrimination',
-      'Hostile work environment',
-    ],
-  },
-  {
-    title: 'Civil Rights & Discrimination',
-    description:
-      'I advocate for individuals whose rights have been violated.',
-    items: [
-      'Police misconduct and brutality',
-      'Excessive force',
-      'Incarceree rights',
-    ],
-  },
-  {
-    title: 'Wrongful Termination & Retaliation',
-    description:
-      'I fight for employees who have been punished for standing up for their rights.',
-    items: [
-      'Wrongful termination',
-      'Retaliation for reporting misconduct',
-      'Whistleblower protection',
-      'Unpaid wages and overtime violations',
-    ],
-  },
-]
-
 function PracticeAreas() {
   return (
-    <div id="practice-areas">
+    <section id="practice-areas">
       <SectionIntro
         eyebrow="Practice Areas"
-        title="Dedicated legal representation when you need it most."
+        title="A clear path for your legal needs."
         className="mt-24 sm:mt-32 lg:mt-40"
       >
         <p>
-          Maheen Haq is an attorney dedicated to standing up for and defending
-          the civil rights of all people.
+          Planning for the future. Protecting your livelihood. Standing up for
+          your rights. Find the support that fits your needs.
         </p>
       </SectionIntro>
-      <Container className="mt-16">
-        <FadeInStagger className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-          {practiceAreas.map((area) => (
-            <FadeIn key={area.title} className="flex">
-              <article className="relative flex w-full flex-col rounded-3xl p-6 ring-1 ring-burgundy-900/10 transition hover:bg-warm-50 sm:p-8">
-                <h3 className="font-display text-xl font-semibold text-burgundy-900">
+      <Container className="mt-12">
+        <FadeInStagger className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+          {practiceAreas.map((area, index) => (
+            <FadeIn key={area.href} className="flex">
+              <Link
+                href={area.href}
+                className="group flex w-full flex-col rounded-3xl bg-white/60 p-8 ring-1 ring-burgundy-900/10 transition hover:bg-gold-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-burgundy-600"
+              >
+                <span
+                  aria-hidden="true"
+                  className="text-sm font-semibold text-gold-700"
+                >
+                  0{index + 1}
+                </span>
+                <h3 className="mt-6 font-display text-2xl font-semibold text-burgundy-900">
                   {area.title}
                 </h3>
-                <p className="mt-4 text-base text-warm-600">
+                <p className="mt-4 flex-1 text-base text-warm-700">
                   {area.description}
                 </p>
-                <ul className="mt-6 space-y-2">
-                  {area.items.map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-start gap-x-2 text-sm text-warm-700"
-                    >
-                      <svg
-                        className="mt-1 h-4 w-4 shrink-0 text-gold-500"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </article>
+                <span className="mt-8 text-sm font-semibold text-burgundy-600">
+                  Explore {area.title}{' '}
+                  <span
+                    aria-hidden="true"
+                    className="inline-block transition group-hover:translate-x-1"
+                  >
+                    →
+                  </span>
+                </span>
+              </Link>
             </FadeIn>
           ))}
         </FadeInStagger>
       </Container>
-    </div>
+    </section>
   )
 }
 
-const testimonials = [
-  {
-    content:
-      'Maheen fought tirelessly for my case when I experienced harassment at work. Her compassion and expertise made an incredibly difficult time more bearable. I am forever grateful for her dedication.',
-    author: 'J.S.',
-    caseType: 'Employment Discrimination Case',
-  },
-  {
-    content:
-      'Professional, compassionate, and effective. Maheen took the time to truly understand my situation and built a strong case that got results. I would recommend her to anyone facing discrimination.',
-    author: 'M.R.',
-    caseType: 'Civil Rights Case',
-  },
-  {
-    content:
-      'She truly understood what I was going through and fought for justice when I felt completely powerless. Maheen is not just a lawyer — she is an advocate who genuinely cares about her clients.',
-    author: 'A.T.',
-    caseType: 'Workplace Harassment Case',
-  },
-]
-
-function Testimonials() {
+function IslamicPlanningPreview() {
   return (
-    <div className="relative mt-24 bg-warm-50 py-20 sm:mt-32 sm:py-28 lg:mt-40 lg:py-32">
-      <GridPattern
-        className="absolute inset-0 -z-10 h-full w-full fill-warm-100 stroke-warm-200 [mask-image:linear-gradient(to_bottom_left,white_50%,transparent_60%)]"
-        yOffset={-256}
-      />
-      <Container>
-        <FadeIn>
-          <h2 className="font-display text-3xl font-medium tracking-tight text-burgundy-900 sm:text-4xl">
-            What Our Clients Say
-          </h2>
-          <p className="mt-4 text-lg text-warm-600">
-            Placeholder testimonials for UI/UX testing. Real testimonials will
-            be added.
+    <Container className="mt-24 sm:mt-32">
+      <FadeIn className="grid items-center gap-10 rounded-3xl bg-gold-100 p-8 sm:p-12 lg:grid-cols-[1.5fr_1fr] lg:gap-16">
+        <div>
+          <p className="text-sm font-semibold text-gold-800">
+            Your family. Your wishes. Your faith.
           </p>
-        </FadeIn>
-        <FadeInStagger className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-3">
-          {testimonials.map((testimonial, index) => (
-            <FadeIn key={index}>
-              <figure className="flex h-full flex-col rounded-3xl bg-white p-8 shadow-sm ring-1 ring-warm-200">
-                <blockquote className="flex-1">
-                  <p className="text-base leading-relaxed text-warm-700">
-                    &ldquo;{testimonial.content}&rdquo;
-                  </p>
-                </blockquote>
-                <figcaption className="mt-6 border-t border-warm-100 pt-6">
-                  <p className="font-display text-base font-semibold text-burgundy-900">
-                    {testimonial.author}
-                  </p>
-                  <p className="mt-1 text-sm text-gold-600">
-                    {testimonial.caseType}
-                  </p>
-                </figcaption>
-              </figure>
-            </FadeIn>
-          ))}
-        </FadeInStagger>
-      </Container>
-    </div>
+          <h2 className="mt-4 font-display text-3xl font-medium tracking-tight text-burgundy-900 sm:text-4xl">
+            Why Islamic Estate Planning Matters
+          </h2>
+          <p className="mt-6 text-lg text-warm-700">
+            Without a plan that accounts for your wishes, Maryland intestacy law
+            determines who inherits your probate estate. I help Muslim families
+            create wills and trusts that reflect Islamic inheritance principles
+            and meet Maryland&apos;s legal requirements.
+          </p>
+          <Link
+            href="/estate-planning#islamic-estate-planning"
+            className="mt-6 inline-flex text-base font-semibold text-burgundy-600 underline underline-offset-4"
+          >
+            Explore Islamic Estate Planning{' '}
+            <span aria-hidden="true" className="ml-2">
+              →
+            </span>
+          </Link>
+        </div>
+        <Image
+          src={imageEstatePlan}
+          alt="Burgundy leather estate plan binder with gold lettering for the Ahmed family"
+          className="h-auto w-full max-w-sm justify-self-center rounded-2xl lg:justify-self-end"
+          sizes="(min-width: 1280px) 384px, (min-width: 1024px) 32vw, (min-width: 512px) 384px, calc(100vw - 112px)"
+          placeholder="blur"
+        />
+      </FadeIn>
+    </Container>
   )
 }
 
@@ -265,69 +202,75 @@ function AboutPreview() {
   return (
     <div className="relative mt-24 bg-warm-50 py-20 sm:mt-32 sm:py-28 lg:mt-40 lg:py-32">
       <GridPattern
-        className="absolute inset-0 -z-10 h-full w-full fill-warm-100 stroke-warm-200 [mask-image:linear-gradient(to_bottom_left,white_50%,transparent_60%)]"
+        className="absolute inset-0 -z-10 h-full w-full [mask-image:linear-gradient(to_bottom_left,white_50%,transparent_60%)] fill-warm-100 stroke-warm-200"
         yOffset={-256}
       />
-    <Container>
-      <FadeIn>
-        <div className="lg:flex lg:items-center lg:gap-x-16">
-          <div className="lg:w-1/2">
-            <Border position="left" className="pl-8">
-              <h2 className="font-display text-3xl font-medium tracking-tight text-burgundy-900 sm:text-4xl">
-                Meet Maheen Haq
-              </h2>
-              <p className="mt-6 text-base text-warm-700">
-                With over a decade of experience as a grassroots organizer,
-                Maheen brings a deep understanding of community-centered and
-                movement lawyering to her practice. Her extensive
-                trauma-informed training, combined with firsthand experience
-                navigating police violence and other civil rights issues, allows
-                her to meet clients where they are. She knows how scary it is to
-                put your body on the line for something you believe in — and
-                she&apos;s committed to creating a safe, client-centered
-                environment every step of the way.
-              </p>
-              <div className="mt-8">
-                <Button href="/about">Learn More About Maheen</Button>
-              </div>
-            </Border>
-          </div>
-          <div className="mt-12 lg:mt-0 lg:w-1/2">
-            <div className="relative mx-auto max-w-md lg:max-w-none">
-              <div className="overflow-hidden rounded-3xl">
-                <Image
-                  src={imageMaheen}
-                  alt="Maheen Haq"
-                  className="w-full object-cover grayscale transition duration-500 hover:grayscale-0"
-                />
+      <Container>
+        <FadeIn>
+          <div className="lg:flex lg:items-center lg:gap-x-16">
+            <div className="lg:w-1/2">
+              <Border position="left" className="pl-8">
+                <h2 className="font-display text-3xl font-medium tracking-tight text-burgundy-900 sm:text-4xl">
+                  Meet Maheen Haq
+                </h2>
+                <p className="mt-6 text-base text-warm-700">
+                  Maheen Haq is a Georgetown University Law Center graduate who
+                  helps individuals and families plan for the future through
+                  wills, trusts, and estate planning.
+                </p>
+                <p className="mt-6 text-base text-warm-700">
+                  With over a decade of experience as a grassroots organizer,
+                  Maheen brings a deep understanding of community-centered and
+                  movement lawyering to her practice. Her extensive
+                  trauma-informed training, combined with firsthand experience
+                  navigating police violence and other civil rights issues,
+                  allows her to meet clients where they are. She knows how scary
+                  it is to put your body on the line for something you believe
+                  in — and she&apos;s committed to creating a safe,
+                  client-centered environment every step of the way.
+                </p>
+                <div className="mt-8">
+                  <Button href="/about">Learn More About Maheen</Button>
+                </div>
+              </Border>
+            </div>
+            <div className="mt-12 lg:mt-0 lg:w-1/2">
+              <div className="relative mx-auto max-w-md lg:max-w-none">
+                <div className="overflow-hidden rounded-3xl">
+                  <Image
+                    src={imageProtest}
+                    alt="Maheen Haq speaking into a microphone with her fist raised at a Palestine protest"
+                    sizes="(min-width: 1024px) 45vw, 100vw"
+                    className="w-full object-cover grayscale transition duration-500 hover:grayscale-0"
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </FadeIn>
-    </Container>
+        </FadeIn>
+      </Container>
     </div>
   )
 }
 
-export const metadata: Metadata = {
-  title: 'Haq Law Firm | Fighting for Justice. Protecting Your Rights.',
-  description:
-    'Haq Law Firm provides compassionate, skilled legal representation for employment discrimination and civil rights violations.',
-}
+export const metadata = pageMetadata(homeTitle, homeDescription, '/')
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Attorney',
   name: 'Maheen Haq',
   alternateName: 'Haq Law Firm',
-  description:
-    'Haq Law Firm provides compassionate, skilled legal representation for employment discrimination, civil rights violations, and workplace harassment.',
+  description: homeDescription,
   url: 'https://haqlegal.com',
   telephone: '+1-240-490-2868',
   email: 'maheen@haqlegal.com',
-  areaServed: 'United States',
   knowsAbout: [
+    'Estate Planning',
+    'Islamic Estate Planning',
+    'Wills and Trusts',
+    'Power of Attorney',
+    'Medical Directives',
+    'Guardianship Planning',
     'Employment Discrimination',
     'Civil Rights',
     'Sexual Harassment',
@@ -342,9 +285,11 @@ const jsonLd = {
       '@type': 'LegalService',
       name: 'Haq Law Firm',
       url: 'https://haqlegal.com',
-      description:
-        'Legal representation for employment discrimination, civil rights violations, and workplace harassment.',
+      description: homeDescription,
       serviceType: [
+        'Estate Planning',
+        'Islamic Estate Planning',
+        'Wills and Trusts',
         'Employment Discrimination',
         'Civil Rights',
         'Wrongful Termination',
@@ -366,10 +311,10 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Hero />
-      <Mission />
       <PracticeAreas />
-      {/* <Testimonials /> */}
+      <IslamicPlanningPreview />
       <AboutPreview />
+      <Mission />
       <ContactSection />
     </RootLayout>
   )

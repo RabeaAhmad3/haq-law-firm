@@ -9,17 +9,20 @@ export function ContactSection() {
         <div className="mx-auto max-w-4xl">
           <div className="max-w-xl">
             <h2 className="font-display text-3xl font-medium text-balance text-white sm:text-4xl">
-              Ready to Discuss Your Case?
+              Let’s Talk About Your Legal Needs
             </h2>
             <p className="mt-4 text-lg text-burgundy-100">
               Schedule a confidential consultation to discuss your legal needs
-              and learn how I can help protect your rights.
+              and take the next step with confidence.
             </p>
             <div className="mt-6 flex flex-wrap gap-4">
               <Button href="/contact" invert>
                 Schedule a Consultation
               </Button>
-              <Button href="tel:+12404902868" className="bg-gold-500 text-burgundy-950 hover:bg-gold-400">
+              <Button
+                href="tel:+12404902868"
+                className="bg-gold-500 text-burgundy-950 hover:bg-gold-400"
+              >
                 Call Now
               </Button>
             </div>
@@ -31,12 +34,18 @@ export function ContactSection() {
                 <p className="font-semibold text-gold-400">Get in Touch</p>
                 <div className="mt-2 text-burgundy-200">
                   <p>
-                    <a href="tel:+12404902868" className="hover:text-white transition">
+                    <a
+                      href="tel:+12404902868"
+                      className="transition hover:text-white"
+                    >
                       (240) 490-2868
                     </a>
                   </p>
                   <p className="mt-1">
-                    <a href="mailto:maheen@haqlegal.com" className="hover:text-white transition">
+                    <a
+                      href="mailto:maheen@haqlegal.com"
+                      className="transition hover:text-white"
+                    >
                       maheen@haqlegal.com
                     </a>
                   </p>

@@ -1,10 +1,10 @@
-import { type Metadata } from 'next'
+import { pageMetadata } from '@/lib/metadata'
 
-export const metadata: Metadata = {
-  title: 'Contact | Haq Law Firm',
-  description:
-    'Contact Haq Law Firm to schedule a confidential consultation about your employment discrimination or civil rights case.',
-}
+export const metadata = pageMetadata(
+  'Contact',
+  'Contact Haq Law Firm to schedule a confidential consultation about estate planning, Islamic wills and trusts, employment matters, or civil rights.',
+  '/contact',
+)
 
 export default function ContactLayout({
   children,
