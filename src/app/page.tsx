@@ -9,7 +9,6 @@ import { GridPattern } from '@/components/GridPattern'
 import { Border } from '@/components/Border'
 import { Button } from '@/components/Button'
 import imageMaheen from '../../maheenhaq.png'
-import imageProtest from '@/images/maheen-palestine-protest.png'
 import imageEstatePlan from '@/images/ahmed-family-estate-plan.png'
 import { RootLayout } from '@/components/RootLayout'
 import { practiceAreas } from '@/lib/practiceAreas'
@@ -21,13 +20,12 @@ function Hero() {
       <div className="lg:flex lg:items-center lg:gap-x-16">
         <FadeIn className="max-w-2xl lg:max-w-none lg:flex-1">
           <h1 className="font-display text-5xl font-medium tracking-tight text-balance text-burgundy-900 sm:text-7xl">
-            Protecting What You&apos;ve Built. Planning for Who You Love.
+            Protecting Your Rights. Preserving What You Leave Behind.
           </h1>
           <p className="mt-6 text-xl text-warm-700">
-            Plan for your family&apos;s future with clear, personal guidance.
-            From wills and trusts that reflect your wishes and faith to advocacy
-            for your rights at work and in your community, I&apos;m here to
-            help.
+            Haq Law Firm is a boutique firm providing estate planning,
+            employment, and civil rights services with the personal attention
+            you deserve.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Button href="/contact">Schedule a Consultation</Button>
@@ -123,19 +121,13 @@ function PracticeAreas() {
       </SectionIntro>
       <Container className="mt-12">
         <FadeInStagger className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-          {practiceAreas.map((area, index) => (
+          {practiceAreas.map((area) => (
             <FadeIn key={area.href} className="flex">
               <Link
                 href={area.href}
                 className="group flex w-full flex-col rounded-3xl bg-white/60 p-8 ring-1 ring-burgundy-900/10 transition hover:bg-gold-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-burgundy-600"
               >
-                <span
-                  aria-hidden="true"
-                  className="text-sm font-semibold text-gold-700"
-                >
-                  0{index + 1}
-                </span>
-                <h3 className="mt-6 font-display text-2xl font-semibold text-burgundy-900">
+                <h3 className="font-display text-2xl font-semibold text-burgundy-900">
                   {area.title}
                 </h3>
                 <p className="mt-4 flex-1 text-base text-warm-700">
@@ -218,17 +210,6 @@ function AboutPreview() {
                   helps individuals and families plan for the future through
                   wills, trusts, and estate planning.
                 </p>
-                <p className="mt-6 text-base text-warm-700">
-                  With over a decade of experience as a grassroots organizer,
-                  Maheen brings a deep understanding of community-centered and
-                  movement lawyering to her practice. Her extensive
-                  trauma-informed training, combined with firsthand experience
-                  navigating police violence and other civil rights issues,
-                  allows her to meet clients where they are. She knows how scary
-                  it is to put your body on the line for something you believe
-                  in — and she&apos;s committed to creating a safe,
-                  client-centered environment every step of the way.
-                </p>
                 <div className="mt-8">
                   <Button href="/about">Learn More About Maheen</Button>
                 </div>
@@ -238,8 +219,8 @@ function AboutPreview() {
               <div className="relative mx-auto max-w-md lg:max-w-none">
                 <div className="overflow-hidden rounded-3xl">
                   <Image
-                    src={imageProtest}
-                    alt="Maheen Haq speaking into a microphone with her fist raised at a Palestine protest"
+                    src={imageMaheen}
+                    alt="Maheen Haq, Attorney at Law"
                     sizes="(min-width: 1024px) 45vw, 100vw"
                     className="w-full object-cover grayscale transition duration-500 hover:grayscale-0"
                   />
