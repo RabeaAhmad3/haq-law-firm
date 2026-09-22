@@ -5,11 +5,8 @@ import { ContactSection } from '@/components/ContactSection'
 import { Container } from '@/components/Container'
 import { FadeIn, FadeInStagger } from '@/components/FadeIn'
 import { SectionIntro } from '@/components/SectionIntro'
-import { GridPattern } from '@/components/GridPattern'
-import { Border } from '@/components/Border'
 import { Button } from '@/components/Button'
 import imageMaheen from '../../maheenhaq.png'
-import imageProtest from '@/images/maheen-palestine-protest.png'
 import imageEstatePlan from '@/images/ahmed-family-estate-plan.png'
 import { RootLayout } from '@/components/RootLayout'
 import { practiceAreas } from '@/lib/practiceAreas'
@@ -191,50 +188,6 @@ function IslamicPlanningPreview() {
   )
 }
 
-function AboutPreview() {
-  return (
-    <div className="relative mt-24 bg-warm-50 py-20 sm:mt-32 sm:py-28 lg:mt-40 lg:py-32">
-      <GridPattern
-        className="absolute inset-0 -z-10 h-full w-full [mask-image:linear-gradient(to_bottom_left,white_50%,transparent_60%)] fill-warm-100 stroke-warm-200"
-        yOffset={-256}
-      />
-      <Container>
-        <FadeIn>
-          <div className="lg:flex lg:items-center lg:gap-x-16">
-            <div className="lg:w-1/2">
-              <Border position="left" className="pl-8">
-                <h2 className="font-display text-3xl font-medium tracking-tight text-burgundy-900 sm:text-4xl">
-                  Meet Maheen Haq
-                </h2>
-                <p className="mt-6 text-base text-warm-700">
-                  Maheen Haq is a Georgetown University Law Center graduate who
-                  helps individuals and families plan for the future through
-                  wills, trusts, and estate planning.
-                </p>
-                <div className="mt-8">
-                  <Button href="/about">Learn More About Maheen</Button>
-                </div>
-              </Border>
-            </div>
-            <div className="mt-12 lg:mt-0 lg:w-1/2">
-              <div className="relative mx-auto max-w-md lg:max-w-none">
-                <div className="overflow-hidden rounded-3xl">
-                  <Image
-                    src={imageProtest}
-                    alt="Maheen Haq speaking into a microphone with her fist raised at a Palestine protest"
-                    sizes="(min-width: 1024px) 45vw, 100vw"
-                    className="w-full object-cover grayscale transition duration-500 hover:grayscale-0"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </FadeIn>
-      </Container>
-    </div>
-  )
-}
-
 export const metadata = pageMetadata(homeTitle, homeDescription, '/')
 
 const jsonLd = {
@@ -295,7 +248,6 @@ export default function Home() {
       <Hero />
       <PracticeAreas />
       <IslamicPlanningPreview />
-      <AboutPreview />
       <Mission />
       <ContactSection />
     </RootLayout>
