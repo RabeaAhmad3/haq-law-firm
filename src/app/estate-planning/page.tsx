@@ -223,9 +223,7 @@ export default function EstatePlanning() {
                   Structuring trusts to reflect Fara&apos;id inheritance shares
                 </li>
                 <li>
-                  Coordinating bequests for charity or non-heirs, including the
-                  permissible one-third share as advised by your religious
-                  advisor
+                  Coordinating bequests for charity or non-heirs
                 </li>
                 <li>
                   Explaining how Islamic inheritance wishes interact with

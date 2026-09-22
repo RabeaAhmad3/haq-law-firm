@@ -74,11 +74,10 @@ function Biography() {
                   civil litigation matters.
                 </p>
                 <p>
-                  Maheen founded Haq Law Firm to expand beyond civil rights
-                  litigation into estate planning — helping individuals and
-                  families, including Muslim families seeking wills and trusts
-                  structured around Islamic inheritance principles, put a clear
-                  plan in place for the people and things they care about most.
+                  In addition to protecting people&apos;s rights, Maheen
+                  protects people&apos;s legacies. Through estate planning, she
+                  helps individuals and families put a clear plan in place for
+                  what matters most.
                 </p>
               </div>
             </Border>
@@ -105,17 +104,17 @@ function Education() {
           </div>
           <div className="rounded-2xl bg-warm-50 p-6">
             <p className="font-display text-lg font-semibold text-burgundy-900">
-              Universidad Del Norte
-            </p>
-            <p className="mt-2 text-sm text-warm-600">International Studies</p>
-          </div>
-          <div className="rounded-2xl bg-warm-50 p-6">
-            <p className="font-display text-lg font-semibold text-burgundy-900">
               University of Maryland Baltimore County
             </p>
             <p className="mt-2 text-sm text-warm-600">
               Bachelor of Arts (BA), Global Studies &amp; Economics
             </p>
+          </div>
+          <div className="rounded-2xl bg-warm-50 p-6">
+            <p className="font-display text-lg font-semibold text-burgundy-900">
+              Universidad Del Norte
+            </p>
+            <p className="mt-2 text-sm text-warm-600">International Studies</p>
           </div>
         </div>
       </FadeIn>
@@ -243,12 +242,7 @@ export const metadata = pageMetadata(
 export default function About() {
   return (
     <RootLayout>
-      <PageIntro eyebrow="About" title="Meet Maheen Haq">
-        <p>
-          Helping individuals and families plan for the future through estate
-          planning, while standing up for their employment and civil rights.
-        </p>
-      </PageIntro>
+      <PageIntro eyebrow="About" title="Meet Maheen Haq" />
 
       <Biography />
       <Education />

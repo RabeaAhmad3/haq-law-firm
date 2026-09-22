@@ -11,7 +11,7 @@ export function PageIntro({
 }: {
   eyebrow: string
   title: string
-  children: React.ReactNode
+  children?: React.ReactNode
   centered?: boolean
 }) {
   return (
@@ -30,14 +30,16 @@ export function PageIntro({
         >
           {title}
         </h1>
-        <div
-          className={clsx(
-            'mt-6 max-w-3xl text-xl text-warm-600',
-            centered && 'mx-auto',
-          )}
-        >
-          {children}
-        </div>
+        {children && (
+          <div
+            className={clsx(
+              'mt-6 max-w-3xl text-xl text-warm-600',
+              centered && 'mx-auto',
+            )}
+          >
+            {children}
+          </div>
+        )}
       </FadeIn>
     </Container>
   )

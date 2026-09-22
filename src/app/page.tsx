@@ -84,17 +84,14 @@ function Mission() {
                 Making a Lasting Impact
               </p>
               <p className="mt-2 text-burgundy-100">
-                The Haq Law Firm is built on a commitment to making the world a
-                better place both inside and outside the courtroom. That&apos;s
+                Haq Law Firm is built on a commitment to making the world a
+                better place both inside and outside the courtroom. That is
                 why{' '}
                 <span className="font-semibold text-gold-400">
                   a portion of our profits are donated to people who need it the
                   most
                 </span>{' '}
-                — turning every client partnership into lasting change. So far
-                some of our projects include providing clean water to survivors
-                of the genocide in Gaza and the building of wells for
-                communities struggling with water insecurity.
+                — turning every client partnership into lasting change.
               </p>
             </div>
           </div>
